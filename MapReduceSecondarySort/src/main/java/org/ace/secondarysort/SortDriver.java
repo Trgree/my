@@ -63,6 +63,7 @@ public class SortDriver extends Configured implements Tool {
 		job.setJarByClass(getClass());
 		job.setMapperClass(SortMapper.class);
 		
+		//不需要GroupingComparator也可以,但reduce key会有很多，这里只要first相同放在一个key即可
 		job.setGroupingComparatorClass(GroupingComparator.class);
 		
 		job.setPartitionerClass(FirstPartitioner.class);
@@ -71,9 +72,9 @@ public class SortDriver extends Configured implements Tool {
 		job.setMapOutputValueClass(IntWritable.class);
 		job.setOutputKeyClass(IntWritable.class);
 		job.setOutputValueClass(IntWritable.class);
-		FileInputFormat.addInputPath(job, new Path(input));
+//		FileInputFormat.addInputPath(job, new Path(input));
 		FileOutputFormat.setOutputPath(job, new Path(output));
-		
+		FileInputFormat.addInputPaths(job, input);// 以逗号分隔的多个路径
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
 

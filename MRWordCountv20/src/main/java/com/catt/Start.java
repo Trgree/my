@@ -24,7 +24,7 @@ public class Start {
 		Configuration conf = new Configuration();
 		GenericOptionsParser optionParser = new GenericOptionsParser(conf, args);
 		String[] remainingArgs = optionParser.getRemainingArgs();
-		if (!(remainingArgs.length == 2 || remainingArgs.length == 4)) {
+		if (!(remainingArgs.length != 2 || remainingArgs.length != 4)) {
 			System.err
 					.println("Usage: wordcount <in> <out> [-skip skipPatternFile]");
 			System.exit(2);
@@ -41,7 +41,8 @@ public class Start {
 		for (int i = 0; i < remainingArgs.length; ++i) {
 			if ("-skip".equals(remainingArgs[i])) {
 				job.addCacheFile(new Path(remainingArgs[++i]).toUri());
-				job.getConfiguration().setBoolean("wordcount.skip.patterns",true);
+				job.getConfiguration().setBoolean("wordcount.skip.patterns",
+						true);
 			} else {
 				otherArgs.add(remainingArgs[i]);
 			}
@@ -49,13 +50,6 @@ public class Start {
 		FileInputFormat.addInputPath(job, new Path(otherArgs.get(0)));
 		FileOutputFormat.setOutputPath(job, new Path(otherArgs.get(1)));
 
-		System.out.println("开始MapReduce");
-		int flag = job.waitForCompletion(true) ? 0 : -1;
-		if(flag==0) {
-			System.out.println("运行成功");
-		} else {
-			System.out.println("运行失败");
-		}
-		System.exit(flag);
+		System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
 }

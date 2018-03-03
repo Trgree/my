@@ -10,7 +10,7 @@ LOGFILE=${WORKPATH}/log/secondarySort_${DATE}.log
 MRJAR=$JAVALIB/secondarySort.jar
 
 ARGS="
--D input=/tmp/secondarySort/input 
+-D input=/tmp/secondarySort/input,/tmp/secondarySort/input2 
 -D output=/tmp/secondarySort/ouput 
 -D mapreduce.job.reduces=1
 "

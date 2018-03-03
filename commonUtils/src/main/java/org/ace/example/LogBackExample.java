@@ -19,9 +19,9 @@ public class LogBackExample {
 		// 设置系统变量，logback可使用此变量
 		System.setProperty("WORKPATH", "E:\\work\\dev\\workspace_test\\commonUtils");
 		// 使用指定logback配置文件
-		LogBackConfigLoader.load("commonUtils/config/logback.xml");
+		LogBackConfigLoader.load("config/logback.xml");  
 		// 在加载完logback配置后面初始化Logger
 		Logger logger = LoggerFactory.getLogger(LogBackExample.class);
-		logger.info("log....");
+		logger.info("log...");
 	}
 }

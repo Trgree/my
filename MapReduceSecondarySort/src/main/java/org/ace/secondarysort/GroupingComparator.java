@@ -4,7 +4,7 @@ import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;
 
 /**
- * 分组函数类。只要first相同就属于同一个组。
+ * 分组函数类。只要first相同就属于同一个组(即reduct的key set)。
  * @author Liangsj
  *
  */

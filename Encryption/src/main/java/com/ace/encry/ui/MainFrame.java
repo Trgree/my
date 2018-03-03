@@ -270,7 +270,7 @@ public class MainFrame extends JFrame {
 		/** º”√‹ */
 		if (flag) {
 			try {
-				result = Encrypt.encrypt(data, key);
+				result =Encrypt.encrypt(data, key);
 			} catch (Exception e) {
 				msgLabel.setForeground(Color.red);
 				msgLabel.setText("º”√‹ ß∞‹");

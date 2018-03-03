@@ -34,21 +34,15 @@ public class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {
 
 	@Override
 	public void setup(Context context) throws IOException, InterruptedException {
-		try {
-			
-		
 		conf = context.getConfiguration();
-		caseSensitive = conf.getBoolean("wordcount.case.sensitive", false);
-		if (caseSensitive) {
+		caseSensitive = conf.getBoolean("wordcount.case.sensitive", true);
+		if (conf.getBoolean("wordcount.skip.patterns", true)) {
 			URI[] patternsURIs = Job.getInstance(conf).getCacheFiles();
 			for (URI patternsURI : patternsURIs) {
 				Path patternsPath = new Path(patternsURI.getPath());
 				String patternsFileName = patternsPath.getName().toString();
 				parseSkipFile(patternsFileName);
 			}
-		}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -69,7 +63,6 @@ public class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {
 	@Override
 	public void map(Object key, Text value, Context context)
 			throws IOException, InterruptedException {
-		System.out.println("map输入：" + value.toString());
 		String line = (caseSensitive) ? value.toString() : value.toString()
 				.toLowerCase();
 		for (String pattern : patternsToSkip) {

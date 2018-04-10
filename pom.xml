@@ -10,12 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>commonUtils</module>
-        <module>Encryption</module>
         <module>MapReduceExample</module>
-        <module>MapReduceSecondarySort</module>
-        <module>MRWordCountv10</module>
-        <module>MRWordCountv20</module>
-        <module>miniStock</module>
     </modules>
 
 

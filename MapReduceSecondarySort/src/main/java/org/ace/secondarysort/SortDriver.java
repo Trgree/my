@@ -22,8 +22,9 @@ import org.apache.hadoop.util.ToolRunner;
  * 
  * 		定义一个新key(IntPair)，由要排序的两个数组成，
  * 		map输出<IntPair,key>
- * 		重写Partitioner,第一个数一样的，发送到同一个reduce
- * 		重写WritableComparator，按第一个数分组，（IntPair中也要重写compareTo方法）
+ * 		重写Partitioner,第一个数一样的，发送到同一个reduce（ 一个分区对应一个reduce）
+ * 		重写WritableComparator，按第一个数分组，（IntPair中也要重写compareTo方法，第二列要排序）
+ * 	     	（reduce可以有多个key，一个key的set就一个组，）
  *  	
 
 输入：

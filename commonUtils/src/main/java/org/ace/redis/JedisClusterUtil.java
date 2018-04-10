@@ -1,14 +1,19 @@
-package org.ace.utils;
+package org.ace.redis;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import org.ace.utils.PropertiesUtil;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
 
+/**
+ *  Redis集群连接工具
+ *  使用properties配置文件
+ */
 public class JedisClusterUtil {
 
 	private String addressKeyPrefix = "redis.address";

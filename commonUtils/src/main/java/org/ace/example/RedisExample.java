@@ -1,6 +1,6 @@
 package org.ace.example;
 
-import org.ace.utils.JedisClusterUtil;
+import org.ace.redis.JedisClusterUtil;
 import org.ace.utils.PropertiesUtil;
 
 import redis.clients.jedis.JedisCluster;

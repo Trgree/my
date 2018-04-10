@@ -1,4 +1,4 @@
-package org.ace.utils;
+package org.ace.hbase;
 
 import java.io.IOException;
 

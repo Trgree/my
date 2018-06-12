@@ -23,10 +23,14 @@
             </pattern>    
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->   
         </encoder>    
-    </appender>    
-    <root level="debug">    
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="baselog" />     
-    </root>    
+    </appender>
 
-</configuration>  
+    <!--指定包下的日志级别-->
+    <logger name="org.ace.example.debug" level="debug"/>
+
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="baselog" />
+    </root>
+</configuration>
